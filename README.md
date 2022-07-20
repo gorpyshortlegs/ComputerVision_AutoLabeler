@@ -112,6 +112,9 @@ Let's get you started!
 4. Switch best.pt with your base trained model(model that can recognize target object)
 
 5.Run main.py and type in required info
+```sh
+python3 main.py
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
