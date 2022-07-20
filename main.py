@@ -1,7 +1,7 @@
 import torch
 import os
 import ssl
-
+import shutil
 import cv2
 import torchvision
 import json  # json for pretty output
@@ -53,7 +53,34 @@ def get_cordinates(img_path,label_path,clas):
 
 
 
+def get_from_folder(label,clas,folder,stored_images):
+    
 
+    # save files to passed folder if it doesn't exist create the folder
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+    if not os.path.isfile(folder+"/data.yaml"):
+        data_file=open(folder+"/data.yaml","w")
+        data_file.write("train: ../train/images\nnc: 0 \nnames: []")
+    if not os.path.exists(folder+"/train"):
+        os.makedirs(folder+"/train")
+    if not os.path.exists(folder+"/train/images"):
+        os.makedirs(folder+"/train/images")
+    if not os.path.exists(folder+"/train/labels"):
+        os.makedirs(folder+"/train/labels")
+
+    for filename in os.listdir(directory):
+      f = os.path.join(directory, filename)
+      if os.path.isfile(f):
+        # filepath is current working directory + folder/train/images or labels + params["q"] + index + .jpg
+        filepath = os.path.join(folder+"/train/images", label +stored_images[1]".jpg")
+        labelpath = os.path.join(folder+"/train/labels", label+stored_images[1] +".txt")
+        response = requests.get(image['original'], headers=headers).content
+        #writes image to file
+        open(filepath,"w")
+        shutil.copy(f,filepath)
+        get_cordinates(filepath,labelpath,clas)
+        
 
 
 
@@ -106,19 +133,22 @@ def get_google_images(label,clas,num,folder,api):
         except Exception as e:
             print(e)
             print(f"Error downloading {index} image. Error =", e)
-folder =input("Enter folder path:")
-api =input("Enter google api key:")
+folder =input("Enter folder path where dataset should be stored:")
+
 while not os.path.exists(folder):
 
     if input("This path doesn't exist do you want to create new folder?(y/n)").strip().lower()=="y":
         os.makedirs(folder)
         break;
     folder =input("Re-Enter folder path:")
-
+web= input("Do you want to use webscraping(w) or pre-prepared folder with images(f)").strip().lower()=="w"
+if web:
+  api =input("Enter google api key:")
 
 while True:
     species=input("Enter species:")
     clas=int(input("What class number:"))
+    
     set_species=species
     try:
         if lis[clas] != species:
@@ -127,8 +157,16 @@ while True:
             print("Class "+str(clas)+" is set to "+set_species)
     except:
         print("Adding new class "+str(clas)+" as species "+species+"")
-    num=int(input("What page of google:"))
-    get_google_images(species,clas,num,folder,api)
+    
+    if web:
+      nm=int(input("What page of google:"))
+      get_google_images(species,clas,nm,folder,api)
+    else:
+      stored_images=input("Path of folder with stored images")
+      while not os.path.exists(stored_images):
+        stored_images =input("Re-Enter folder path:")
+    
+      get_from_folder(species,clas,folder)
     data_file=list(open(folder+"/data.yaml","r"))
 
     num=int(data_file[1][3:])
