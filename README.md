@@ -168,7 +168,7 @@ Project Link: [https://github.com/gorpyshortlegs/ComputerVision_AutoLabeler](htt
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+
 
 * [Github readme template](https://github.com/othneildrew/Best-README-Template)
 * [Roboflow Labelling Tool](https://roboflow.com)
