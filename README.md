@@ -12,7 +12,7 @@ Automatically labels images for AI model training!
 <br />
 <div align="center">
   <a href="https://github.com/gorpyshortlegs/ComputerVision_AutoLabeler">
-    <img src="images/Labeller.png" alt="Logo" width="80" height="80">
+    <img src="images/labeller.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Automatically Label Computer Vision Dataset</h3>
