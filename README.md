@@ -18,7 +18,7 @@ Automatically labels images for AI model training!
   <h3 align="center">Automatically Label Computer Vision Dataset</h3>
 
   <p align="center">
-    An awesome README template to jumpstart your projects!
+    Extremely helpful time saver on certain Computer Vision projects!
     <br />
     <a href="https://github.com/gorpyshortlegs/ComputerVision_AutoLabeler"><strong>Explore the docs »</strong></a>
     <br />
