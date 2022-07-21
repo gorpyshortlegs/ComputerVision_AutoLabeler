@@ -50,7 +50,7 @@ Automatically labels images for AI model training!
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
+    <li><a href="#example">Example</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -103,7 +103,7 @@ Let's get you started!
 1. Get a free API Key at [https://serpapi.com/users/sign_up](https://serpapi.com/users/sign_up)
 2. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/gorpyshortlegs/ComputerVision_AutoLabeler
    ```
 3. Install python packages
    ```sh
@@ -121,9 +121,40 @@ python3 main.py
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Example
+Watch walkthrough video <a href="">here</a>.
+Creating a model that can recognize various dog species.
+<img src="Dogs.png" alt="Dog" width="500" height="500">
 
-Use cases and demo coming soon!
+1.Gather images of a few 100 random dogs (Using google <a href="https://serpapi.com">SerpAPI</a>  helps speed up this proccess)
+
+2.Label the dog in each image(Using <a href="https://roboflow.com"> Roboflow </a> or any labelling tool)
+
+<img src="Roboflow.png" alt="Roboflow" width="500" height="500">
+
+3.Use pytorch to train model(<a href="https://github.com/ultralytics/yolov5/wiki/Train-Custom-Data">Pytorch Github Tutorial</a>)
+
+4. Get a free API Key at [https://serpapi.com/users/sign_up](https://serpapi.com/users/sign_up)
+
+5. Clone the repo
+   ```sh
+   git clone https://github.com/gorpyshortlegs/ComputerVision_AutoLabeler
+   ```
+6. Install python packages
+   ```sh
+   pip install -r requirements.txt
+   ```
+7. Switch best.pt with your trained model weights
+
+8.Run main.py and type in required info
+```sh
+python3 main.py
+```
+9.Start entering dog species and watch your dataset grow!
+
+10.Upload dataset to labelling program(like  <a href="https://roboflow.com"> Roboflow </a>) and tweak labels
+
+11.Train model on new dataset!
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
