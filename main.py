@@ -48,6 +48,7 @@ def get_cordinates(img_path,label_path,clas):
         print("BoundingBox: "+final_str)
         #writes annotation to file
         fil.write(final_str)
+        fil.write("\n")
     fil.close()
 
 
@@ -73,7 +74,7 @@ def get_from_folder(label,clas,folder,stored_images):
       f = os.path.join(directory, filename)
       if os.path.isfile(f):
         # filepath is current working directory + folder/train/images or labels + params["q"] + index + .jpg
-        filepath = os.path.join(folder+"/train/images", label +stored_images[1]".jpg")
+        filepath = os.path.join(folder+"/train/images", label +stored_images[1]+".jpg")
         labelpath = os.path.join(folder+"/train/labels", label+stored_images[1] +".txt")
         response = requests.get(image['original'], headers=headers).content
         #writes image to file
@@ -148,7 +149,7 @@ if web:
 while True:
     species=input("Enter species:")
     clas=int(input("What class number:"))
-    
+
     set_species=species
     try:
         if lis[clas] != species:
@@ -157,7 +158,7 @@ while True:
             print("Class "+str(clas)+" is set to "+set_species)
     except:
         print("Adding new class "+str(clas)+" as species "+species+"")
-    
+
     if web:
       nm=int(input("What page of google:"))
       get_google_images(species,clas,nm,folder,api)
@@ -165,7 +166,7 @@ while True:
       stored_images=input("Path of folder with stored images")
       while not os.path.exists(stored_images):
         stored_images =input("Re-Enter folder path:")
-    
+
       get_from_folder(species,clas,folder)
     data_file=list(open(folder+"/data.yaml","r"))
 
@@ -180,5 +181,6 @@ while True:
     lis[clas]=set_species
     data_file=open(folder+"/data.yaml","w")
     data_file.write("train: ../train/images\nnc: "+str(num)+"\nnames: "+str(lis))
+
 
 
